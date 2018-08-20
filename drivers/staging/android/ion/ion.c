@@ -583,11 +583,11 @@ static struct ion_handle *__ion_alloc(struct ion_client *client, size_t len,
 		/* if the caller didn't specify this heap id */
 		if (!((1 << heap->id) & heap_id_mask))
 			continue;
-		trace_ion_alloc_buffer_start(client->name, heap->name, len,
-					     heap_id_mask, flags);
+//		trace_ion_alloc_buffer_start(client->name, heap->name, len,
+//					     heap_id_mask, flags);
 		buffer = ion_buffer_create(heap, dev, len, align, flags);
-		trace_ion_alloc_buffer_end(client->name, heap->name, len,
-					   heap_id_mask, flags);
+//		trace_ion_alloc_buffer_end(client->name, heap->name, len,
+//					   heap_id_mask, flags);
 		if (!IS_ERR(buffer))
 			break;
 
@@ -609,6 +609,9 @@ static struct ion_handle *__ion_alloc(struct ion_client *client, size_t len,
 				dbg_str[MAX_DBG_STR_LEN-1] = '\0';
 			}
 		}
+//		trace_ion_alloc_buffer_fallback(client->name, heap->name, len,
+//					    heap_id_mask, flags,
+//					    PTR_ERR(buffer));
 	}
 	up_read(&dev->lock);
 
