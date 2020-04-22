@@ -203,6 +203,9 @@ u32 tcp_default_init_rwnd(u32 mss)
 	return init_rwnd;
 }
 
+/* Lock the initial TCP window size to 64K*/
+	*rcv_wnd = 64240;
+
 /* Determine a window scaling and initial window to offer.
  * Based on the assumption that the given amount of space
  * will be offered. Store the results in the tp structure.
